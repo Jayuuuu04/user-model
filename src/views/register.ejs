@@ -1,0 +1,310 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Font Awesome Icons  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+        integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
+        crossorigin="anonymous" />
+
+    <!-- Google Fonts  -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: #ff99f5;
+            background-image:
+                radial-gradient(at 61% 4%, hsla(303, 91%, 61%, 1) 0px, transparent 50%),
+                radial-gradient(at 75% 66%, hsla(196, 91%, 79%, 1) 0px, transparent 50%),
+                radial-gradient(at 98% 88%, hsla(76, 87%, 78%, 1) 0px, transparent 50%),
+                radial-gradient(at 23% 16%, hsla(238, 96%, 77%, 1) 0px, transparent 50%),
+                radial-gradient(at 95% 65%, hsla(13, 91%, 75%, 1) 0px, transparent 50%),
+                radial-gradient(at 10% 79%, hsla(228, 96%, 69%, 1) 0px, transparent 50%),
+                radial-gradient(at 85% 58%, hsla(328, 81%, 68%, 1) 0px, transparent 50%);
+            background-repeat: no-repeat;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 15rem 0;
+        }
+
+        .card {
+            backdrop-filter: blur(16px) saturate(180%);
+            -webkit-backdrop-filter: blur(16px) saturate(180%);
+            background-color: rgba(0, 0, 0, 0.75);
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.125);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 30px 40px;
+            margin-left: 30%;
+            margin-right: 30%;
+        }
+
+        .lock-icon {
+            font-size: 3rem;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            margin-top: 10px;
+            text-transform: uppercase;
+        }
+
+        p {
+            font-size: 12px;
+        }
+
+        button {
+            margin-top: 15px;
+            width: 80%;
+            background-color: deepskyblue;
+            color: white;
+            padding: 10px;
+            text-transform: uppercase;
+        }
+
+        .form-container {
+            text-align: center;
+            margin-top: 2px;
+            margin-left: 5%;
+            margin-right: 5%;
+        }
+
+        .form-input {
+            margin-top: 15px;
+            width: 80%;
+            background: transparent;
+            border: none;
+            border-bottom: 2px solid deepskyblue;
+            font-size: 15px;
+            color: white;
+            outline: none;
+
+        }
+
+        .option-bg {
+            background-color: black;
+        }
+
+        .forgot-password-link {
+            margin-top: 10px;
+        }
+
+        .forgot-password-link a {
+            text-decoration: none;
+            color: deepskyblue;
+            font-size: 12px;
+        }
+
+        .forgot-password-link a:hover {
+            text-decoration: underline;
+            color: white;
+        }
+
+        .custom-alert {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            text-align: center;
+            padding: 10px;
+            z-index: 9999;
+        }
+
+        .success-alert {
+            background-color: green;
+        }
+
+        .error-alert {
+            background-color: red;
+        }
+    </style>
+    <title>Register Page</title>
+
+
+</head>
+
+<body>
+    <div class="custom-alert" id="customAlert">
+        <p id="alertMessage"></p>
+    </div>
+    <div class="card">
+        <p class="lock-icon"><i class="fas fa-lock"></i></p>
+        <h2>Register</h2>
+        <p>Enter your credentials</p>
+        <div class="form-container">
+            <input type="text" class="form-input" id="f_name" name="f_name" placeholder="Enter Your Firstname ">
+            <input type="text" class="form-input" id="l_name" name="l_name" placeholder="Enter Your Lastname">
+            <input type="text" class="form-input" id="username" name="username" placeholder="Enter Your Username">
+            <input type="email" class="form-input" id="email" name="email" placeholder="Enter Your Email">
+            <input type="password" class="form-input" id="password" name="password" placeholder="Enter your Password">
+            <input type="date" class="form-input" id="dob" name="dob" placeholder="Enter Your Date of Birth">
+            <!-- <label for="gender" id="gender" name="gender"> -->
+            <select class="form-input" id="gender" name="gender">
+                <option value="Male" class="option-bg">Male</option>
+                <option value="Female" class="option-bg">Female</option>
+                <option value="Other" class="option-bg">Other</option>
+            </select>
+            <!-- </label> -->
+
+            <input type="textarea" class="form-input" id="address" name="address" placeholder="Enter Your Address">
+            <input type="tel" class="form-input" id="ph_no" name="ph_no" placeholder="Enter Your Contact Number">
+            <div class="forgot-password-link">
+                <!-- <a href="http://localhost:8000/user/auth/login">Already have an account? Log in</a> -->
+                <p>Already have an account? <a href="http://localhost:8000/user/auth/login">Log in</a></p>
+            </div>
+            <button onclick="submitForm()">Register</button>
+        </div>
+
+    </div>
+    <div class="alert alert-success alert-dismissible fade show mt-3" id="successAlert" style="display: none;">
+        <strong>Success!</strong> Password Updated Successfully!
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+    </div>
+
+    <div class="alert alert-danger alert-dismissible fade show mt-3" id="errorAlert" style="display: none;">
+        <strong>Error!</strong> Password Does Not Match or Password Must Be 6 Characters Long.
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+    </div>
+    <script>
+        function showCustomAlert(message,isSuccess) {
+            const customAlert = document.getElementById('customAlert');
+            const alertMessage = document.getElementById('alertMessage');
+            alertMessage.innerText = message;
+            customAlert.classList.add(isSuccess ? 'success-alert' : 'error-alert');
+            customAlert.style.display = 'block';
+            setTimeout(() => {
+                customAlert.style.display = 'none';
+                customAlert.classList.remove(isSuccess ? 'success-alert' : 'error-alert');
+            }, 3000)
+        }
+
+        function validateEmail(email) {
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailPattern.test(email);
+        }
+
+
+        function submitForm() {
+            let f_name = document.getElementById('f_name').value;
+            let l_name = document.getElementById('l_name').value;
+            let username = document.getElementById('username').value;
+            let email = document.getElementById('email').value;
+            let password = document.getElementById('password').value;
+            let dob = document.getElementById('dob').value;
+            let gender = document.getElementById('gender').value;
+            let address = document.getElementById('address').value;
+            let ph_no = document.getElementById('ph_no').value;
+
+            if (f_name.trim() === '') {
+                showCustomAlert('FirstName is required.');
+                return;
+            }
+            if (l_name.trim() === '') {
+                showCustomAlert('LastName is required.');
+                return;
+            }
+            if (username.trim() === '') {
+                showCustomAlert('Username is required.');
+                return;
+            }
+            if (email.trim() === '') {
+                showCustomAlert('Email is required.');
+                return;
+            }
+            if (!validateEmail(email)) {
+                showCustomAlert('Invalid email format.');
+                return;
+            }
+            if (password.trim() === '') {
+                showCustomAlert('Password is required.');
+                return;
+            }
+            if (dob.trim() === '') {
+                showCustomAlert('Date of Birth is required.');
+                return;
+            }
+            if (gender.trim() === '') {
+                showCustomAlert('Gender is required.');
+                return;
+            }
+            if (address.trim() === '') {
+                showCustomAlert('Address is required.');
+                return;
+            }
+            if (ph_no.trim() === '') {
+                showCustomAlert('Phone Number is required.');
+                return;
+            }
+
+
+            let apiUrl = 'http://localhost:8000/user/register'
+
+            let data = {
+                f_name: f_name,
+                l_name: l_name,
+                username: username,
+                email: email,
+                password: password,
+                dob: dob,
+                gender: gender,
+                address: address,
+                ph_no: ph_no
+            }
+            fetch(apiUrl, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data),
+            })
+                .then(response => {
+                    if (response.ok) {
+                        // setTimeout(() => {
+                        //     alert("User Registered Successfully!!!!!")
+                        //     window.location.href = 'http://localhost:8000/user/auth/login'
+                        // }, 3000);
+                        showCustomAlert("User Register  Successfully!!!!", true)
+                        window.location.href = 'http://localhost:8000/user/auth/login'
+
+                    } else {
+                        showCustomAlert('Invalid Credentials', false)
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error)
+                })
+        }
+    </script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+        integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+        integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

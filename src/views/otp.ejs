@@ -118,6 +118,13 @@
             padding: 10px;
             z-index: 9999;
         }
+        .success-alert {
+            background-color: green;
+        }
+
+        .error-alert {
+            background-color: red;
+        }
     </style>
 
     <title>OTP Validation </title>
@@ -136,15 +143,26 @@
             <button onclick="submitForm()">Submit</button>
         </div>
     </div>
+    <div class="alert alert-success alert-dismissible fade show mt-3" id="successAlert" style="display: none;">
+        <strong>Success!</strong> OTP Verified!!!
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+    </div>
+
+    <div class="alert alert-danger alert-dismissible fade show mt-3" id="errorAlert" style="display: none;">
+        <strong>Error!</strong> Invalid OTP!!!!!Please Provide Valid OTP
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+    </div>
 
     <script>
-        function showCustomAlert(message) {
+        function showCustomAlert(message, isSuccess) {
             const customAlert = document.getElementById('customAlert');
             const alertMessage = document.getElementById('alertMessage');
             alertMessage.innerText = message;
+            customAlert.classList.add(isSuccess ? 'success-alert' : 'error-alert');
             customAlert.style.display = 'block';
             setTimeout(() => {
                 customAlert.style.display = 'none';
+                customAlert.classList.remove(isSuccess ? 'success-alert' : 'error-alert');
             }, 3000)
         }
         function submitForm() {
@@ -173,7 +191,7 @@
                     }
                 })
                 .catch(error => {
-                    console.error('Error:', error);
+                    console.log('Error:', error);
                 });
         }
     </script>

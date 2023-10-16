@@ -46,9 +46,7 @@ const forgotPassword = async (req, res) => {
         const userOtp = await knex(table)
             .where({ 'email': email })
             .first()
-        console.log(userOtp)
         if (userOtp == undefined) {
-
             await knex(table).insert({
                 email,
                 otp,
@@ -56,7 +54,7 @@ const forgotPassword = async (req, res) => {
             })
 
         } else {
-            if (userOtp.otp == 0) {
+            if (userOtp.otp === 0) {
                 await knex(table)
                     .where({ 'email': email })
                     .update({ 'otp': otp })

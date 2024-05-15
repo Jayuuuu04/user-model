@@ -12,4 +12,3 @@ const db = knex({
 })
 
 export default db
-//

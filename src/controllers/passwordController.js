@@ -82,13 +82,17 @@ const forgotPasswordForm = async (req, res) => {
 
 const otpCheck = async (req, res) => {
     try {
-
         const otp = req.body.otp;
-
+        if (!otp) {
+            return res.status(400).json({
+                error: true,
+                message: "OTP is required.",
+                data: null
+            });
+        }
         const schema = Joi.object({
             otp: Joi.number().min(100000).max(999999).required()
         })
-
         const { error } = schema.validate({ otp })
 
         if (error) {
@@ -160,7 +164,7 @@ const resetPassword = async (req, res) => {
             .where({ 'email': email })
             .update({ 'password': hashedPassword })
 
-        console.log(a)
+        // console.log(a)
 
         return res.status(200).json({
             error: false,

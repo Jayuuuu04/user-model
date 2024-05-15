@@ -28,12 +28,11 @@ const sendMail = async (email, content,res) => {
         }).end()
 
     } catch (err) {
-        console.log(err)
-        // return res.status(400).json({
-        //     error: true,
-        //     message: "Email Could Not Be Sent!!!!",
-        //     data: err.message,
-        // });
+        return res.status(400).json({
+            error: true,
+            message: "Email Could Not Be Sent!!!!",
+            data: err.message,
+        });
     }
 }
 
